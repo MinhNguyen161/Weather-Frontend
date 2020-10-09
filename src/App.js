@@ -20,6 +20,7 @@ function App() {
   const [weather, setData] = useState(null)
 
 
+
   const handleSubmit = (e) => {
     console.log("meo", e.target.city.value)
     e.preventDefault()
@@ -30,7 +31,7 @@ function App() {
     let city = ''
     if (e) city = e
     try {
-      let url = `http://localhost:5001?city=${city}`
+      let url = `${process.env.REACT_APP_BACKEND}?city=${city}`
       let response = await fetch(url)
       let data = await response.json()
       setData(data.data)
